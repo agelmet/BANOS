@@ -346,6 +346,32 @@ main,.hdr-in,footer{transition:opacity .3s}
 .ax-dl div{padding-top:14px;border-top:1px solid rgba(244,238,225,.14)}
 .ax-dl dt{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--wheat-2);margin-bottom:4px}
 .ax-dl dd{margin:0;font-size:16px;color:rgba(244,238,225,.8);line-height:1.55}
+/* long approach panels — the client's own texts (25 Sept 2026) */
+.ax-long{align-items:center;row-gap:34px}
+.ax-q{margin:0 0 20px;padding:2px 0 2px 20px;border-left:2px solid var(--wheat)}
+.ax-q p{font-family:var(--serif);font-style:italic;font-size:clamp(19px,1.55vw,22px);line-height:1.42;color:var(--paper);margin:0}
+.ax-q cite{display:block;margin-top:10px;font-style:normal;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wheat-2)}
+.ax-long .ax-txt > p{font-size:16.5px;line-height:1.62}
+.ax-long .ax-txt > p + p{margin-top:12px}
+.ax-how{grid-column:1/-1;border-top:1px solid rgba(244,238,225,.14);padding-top:30px}
+.ax-how h4{font-family:var(--sans);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--wheat-2);font-weight:600;margin:0 0 22px}
+.ax-steps{list-style:none;margin:0;padding:0;columns:2;column-gap:52px;counter-reset:st}
+.ax-steps li{break-inside:avoid;position:relative;padding:0 0 20px 48px;counter-increment:st}
+.ax-steps li::before{content:counter(st);position:absolute;left:0;top:0;width:31px;height:31px;border-radius:50%;border:1px solid rgba(220,195,142,.55);background:rgba(196,161,90,.08);color:var(--wheat-2);font-size:13.5px;font-weight:600;display:grid;place-items:center;line-height:1}
+.ax-steps b{display:block;font-family:var(--serif);font-weight:500;font-size:19.5px;line-height:1.3;color:var(--paper);margin:3px 0 5px}
+.ax-steps span{display:block;font-size:16px;line-height:1.58;color:rgba(244,238,225,.8)}
+.ax-steps li.solo span{padding-top:4px;color:rgba(244,238,225,.9)}
+.ax-plain{margin:12px 0 0;padding:18px 22px;border-radius:16px;background:rgba(196,161,90,.12);box-shadow:inset 0 0 0 1px rgba(220,195,142,.22);color:rgba(244,238,225,.92);font-size:16.5px;line-height:1.6}
+.ax-plain b{color:var(--wheat-2);font-weight:600}
+.ax-p.on .ax-q{animation:qIn .7s .15s var(--ease) both}
+.ax-p.on .ax-steps li{animation:stIn .5s var(--ease) both;animation-delay:calc(.3s + var(--i) * .05s)}
+.ax-p.on .ax-steps li::before{animation:stDot .6s var(--ease) both;animation-delay:calc(.35s + var(--i) * .05s)}
+@keyframes qIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes stIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes stDot{from{transform:scale(.4)}60%{transform:scale(1.12)}to{transform:scale(1)}}
+@media (min-width:901px){.ax-long{grid-template-columns:.82fr 1.18fr}}
+@media (max-width:900px){.ax-steps{columns:1}.ax-how{padding-top:24px}.ax-steps b{font-size:18.5px}}
+
 /* diagram parts */
 .f-lb{font-family:var(--sans);font-size:15px;fill:rgba(244,238,225,.78);text-anchor:middle;font-weight:600;letter-spacing:.02em}
 .f-hi{fill:var(--wheat-2);font-family:var(--serif);font-style:italic;font-size:20px;font-weight:500}
@@ -837,9 +863,9 @@ main,.hdr-in,footer{transition:opacity .3s}
   <div class="ax rv">
    <div class="ax-tabs" role="tablist" aria-label="Θεραπευτικές προσεγγίσεις" data-en-aria="Therapeutic approaches">
     <button role="tab" id="t-psy" aria-controls="p-psy" aria-selected="true" tabindex="0"><span class="ax-k" data-en="The basis">Η βάση</span><span class="ax-n" data-en="Psychotherapy">Ψυχοθεραπεία</span></button>
-    <button role="tab" id="t-cbt" aria-controls="p-cbt" aria-selected="false" tabindex="-1"><span class="ax-k">CBT</span><span class="ax-n" data-en="Cognitive Behavioural Therapy">Γνωσιακή Συμπεριφορική Θεραπεία</span></button>
+    <button role="tab" id="t-cbt" aria-controls="p-cbt" aria-selected="false" tabindex="-1"><span class="ax-k">CBT</span><span class="ax-n" data-en="Cognitive Behavioural Therapy">Γνωσιακή-Συμπεριφορική Θεραπεία</span></button>
     <button role="tab" id="t-emdr" aria-controls="p-emdr" aria-selected="false" tabindex="-1"><span class="ax-k">EMDR</span><span class="ax-n" data-en="Trauma therapy">Θεραπεία τραύματος</span></button>
-    <button role="tab" id="t-cat" aria-controls="p-cat" aria-selected="false" tabindex="-1"><span class="ax-k">CAT</span><span class="ax-n" data-en="Cognitive Analytic Therapy">Γνωστική Αναλυτική Ψυχοθεραπεία</span></button>
+    <button role="tab" id="t-cat" aria-controls="p-cat" aria-selected="false" tabindex="-1"><span class="ax-k" data-en="CAT">ΓΑΨ</span><span class="ax-n" data-en="Cognitive Analytic Therapy">Γνωσιακή-Αναλυτική Ψυχοθεραπεία</span></button>
     <button role="tab" id="t-cpl" aria-controls="p-cpl" aria-selected="false" tabindex="-1"><span class="ax-k" data-en="Couples">Ζεύγους</span><span class="ax-n" data-en="Couples therapy">Θεραπεία ζεύγους</span></button>
    </div>
    <div class="ax-stage">
@@ -864,7 +890,7 @@ main,.hdr-in,footer{transition:opacity .3s}
      </div>
     </div>
 
-    <div class="ax-p" role="tabpanel" id="p-cbt" aria-labelledby="t-cbt" hidden>
+    <div class="ax-p ax-long" role="tabpanel" id="p-cbt" aria-labelledby="t-cbt" hidden>
      <div class="ax-fig" aria-hidden="true">
       <svg viewBox="0 0 360 260" class="fig fig-cbt">
        <path id="cbtTri" class="f-edge" d="M180 44 L 294 214 L 66 214 Z"/>
@@ -877,16 +903,31 @@ main,.hdr-in,footer{transition:opacity .3s}
       </svg>
      </div>
      <div class="ax-txt">
-      <h3 data-en="Cognitive Behavioural Therapy (CBT)">Γνωσιακή Συμπεριφορική Θεραπεία (CBT)</h3>
-      <p data-en="CBT starts from a simple idea: our thoughts, our emotions and our behaviour are connected. When we change the way we interpret a situation or how we react to it, the way we feel changes too. It is a practical, goal-oriented and well-researched approach.">Η CBT ξεκινά από μια απλή ιδέα: οι σκέψεις, τα συναισθήματα και η συμπεριφορά μας συνδέονται μεταξύ τους. Όταν αλλάζουμε τον τρόπο που ερμηνεύουμε μια κατάσταση ή τον τρόπο που αντιδρούμε σε αυτήν, αλλάζει και το πώς νιώθουμε. Είναι μια πρακτική, στοχευμένη και καλά ερευνημένη προσέγγιση.</p>
-      <dl class="ax-dl">
-       <div><dt data-en="In a session">Σε μια συνεδρία</dt><dd data-en="We set clear goals, notice the thoughts that trouble you, test them and practise new responses. Often there is a small exercise to try between sessions.">Θέτουμε σαφείς στόχους, εντοπίζουμε τις σκέψεις που σας δυσκολεύουν, τις ελέγχουμε και δοκιμάζουμε νέες αντιδράσεις. Συχνά υπάρχει μια μικρή άσκηση για το διάστημα ανάμεσα στις συνεδρίες.</dd></div>
-       <div><dt data-en="When it helps">Πότε βοηθά</dt><dd data-en="Anxiety and panic, fears, low mood, stress, obsessive thoughts, sleep difficulties, low self-esteem.">Άγχος και κρίσεις πανικού, φοβίες, πεσμένη διάθεση, στρες, ιδεοψυχαναγκαστικές σκέψεις, δυσκολίες στον ύπνο, χαμηλή αυτοεκτίμηση.</dd></div>
-      </dl>
+      <h3 data-en="Cognitive Behavioural Therapy (CBT)">Γνωσιακή-Συμπεριφορική Θεραπεία (CBT)</h3>
+      <blockquote class="ax-q">
+       <p data-en="“Men are disturbed not by things, but by the views which they take of things.”">«Δεν ταράζουν τους ανθρώπους τα πράγματα, αλλά οι κρίσεις που κάνουν για τα πράγματα.»</p>
+       <cite data-en="Epictetus, Enchiridion">Επίκτητος, Εγχειρίδιον</cite>
+      </blockquote>
+      <p data-en="This captures the core principle of Cognitive Behavioural Therapy (CBT), which focuses on the connection between our thoughts, our emotions and our behaviour. The aim, through a structured, practical and collaborative relationship, is to understand what keeps a difficulty going in the present and gradually to build more helpful ways of managing it.">Το παραπάνω αποκρυσταλλώνει την βασική αρχή της Γνωσιακής-Συμπεριφορικής Θεραπείας (CBT), η οποία εστιάζει στη σύνδεση ανάμεσα στις σκέψεις, τα συναισθήματα και τις συμπεριφορές μας. Στόχος είναι, μέσα από μια δομημένη, πρακτική και συνεργατική σχέση, να κατανοήσουμε τι διατηρεί μια δυσκολία στο παρόν και να δημιουργήσουμε σταδιακά πιο λειτουργικούς τρόπους διαχείρισής της.</p>
+     </div>
+     <div class="ax-how">
+      <h4 data-en="How we work">Πώς δουλεύουμε</h4>
+      <ol class="ax-steps">
+       <li style="--i:0"><b data-en="We understand what is happening">Κατανοούμε τι συμβαίνει</b><span data-en="We start from what troubles you today. We explore when it appears, what thoughts and feelings it brings and how you react when it happens.">Ξεκινάμε από αυτό που σας δυσκολεύει σήμερα. Διερευνούμε πότε εμφανίζεται, τι σκέψεις και συναισθήματα προκαλεί και πώς αντιδράτε όταν συμβαίνει.</span></li>
+       <li class="solo" style="--i:1"><span data-en="Differential diagnosis and psychoeducation about the disorder">Διαφορική διάγνωση και ψυχοεκπαίδευση στη διαταραχή</span></li>
+       <li class="solo" style="--i:2"><span data-en="Creating a treatment plan">Δημιουργία θεραπευτικού πλάνου</span></li>
+       <li class="solo" style="--i:3"><span data-en="Getting familiar with the cognitive behavioural model of therapy">Εξοικείωση με το γνωσιακό-συμπεριφορικό μοντέλο θεραπείας</span></li>
+       <li class="solo" style="--i:4"><span data-en="Learning core tools (a thought record, relaxation techniques, cognitive and behavioural techniques)">Εκμάθηση βασικών εργαλείων (ημερολόγιο καταγραφής, τεχνικές χαλάρωσης, γνωσιακές και συμπεριφορικές τεχνικές)</span></li>
+       <li class="solo" style="--i:5"><span data-en="Identifying the automatic negative thoughts and distorted beliefs connected with the problem">Εντοπισμός των αυτόματων αρνητικών σκέψεων και διαστρεβλωμένων πεποιθήσεων που συνδέονται με το πρόβλημα</span></li>
+       <li class="solo" style="--i:6"><span data-en="Cognitive restructuring of thoughts and beliefs through cognitive techniques">Γνωσιακή αναδόμηση σκέψεων και πεποιθήσεων μέσα από γνωσιακές τεχνικές</span></li>
+       <li class="solo" style="--i:7"><span data-en="Behavioural exposure techniques (in imagination and in vivo) to reduce avoidance of the stressful stimulus">Συμπεριφορικές τεχνικές έκθεσης (στη φαντασία και in vivo) για τη μείωση της αποφυγής του στρεσογόνου ερεθίσματος</span></li>
+       <li style="--i:8"><b data-en="We carry the work into everyday life">Μεταφέρουμε τη δουλειά στην καθημερινότητα</b><span data-en="Therapy continues outside the office too. Small exercises and observations can help what we learn in the session start to apply in real life.">Η θεραπεία συνεχίζεται και έξω από το γραφείο. Μικρές ασκήσεις και παρατηρήσεις μπορούν να βοηθήσουν ώστε όσα μαθαίνουμε στη συνεδρία να αρχίσουν να εφαρμόζονται στην πραγματική ζωή.</span></li>
+       <li style="--i:9"><b data-en="We build greater independence">Χτίζουμε μεγαλύτερη αυτονομία</b><span data-en="The aim is that you do not always need therapy in order to meet the challenges of everyday life.">Στόχος είναι να μη χρειάζεστε πάντα τη θεραπεία για να μπορείτε να ανταποκρίνεστε στις προκλήσεις της καθημερινότητας.</span></li>
+      </ol>
      </div>
     </div>
 
-    <div class="ax-p" role="tabpanel" id="p-emdr" aria-labelledby="t-emdr" hidden>
+    <div class="ax-p ax-long" role="tabpanel" id="p-emdr" aria-labelledby="t-emdr" hidden>
      <div class="ax-fig" aria-hidden="true">
       <svg viewBox="0 0 360 260" class="fig fig-emdr">
        <path class="f-track" d="M40 70 H 320"/>
@@ -897,16 +938,31 @@ main,.hdr-in,footer{transition:opacity .3s}
       </svg>
      </div>
      <div class="ax-txt">
-      <h3 data-en="EMDR therapy">Θεραπεία EMDR</h3>
-      <p data-en="EMDR (Eye Movement Desensitization and Reprocessing) is a method for processing difficult or traumatic experiences. While you briefly bring a memory to mind, you follow a bilateral stimulus — for example, the therapist’s hand moving left and right. This helps the brain to process the memory, so that it remains a memory but no longer brings the same intensity.">Το EMDR (Eye Movement Desensitization and Reprocessing — απευαισθητοποίηση και επανεπεξεργασία μέσω οφθαλμικών κινήσεων) είναι μια μέθοδος για την επεξεργασία δύσκολων ή τραυματικών εμπειριών. Ενώ φέρνετε για λίγο στο μυαλό μια ανάμνηση, ακολουθείτε ένα αμφίπλευρο ερέθισμα — για παράδειγμα, το χέρι του θεραπευτή που κινείται δεξιά και αριστερά. Αυτό βοηθά τον εγκέφαλο να επεξεργαστεί την ανάμνηση, ώστε να μείνει ανάμνηση αλλά να μη φέρνει πια την ίδια ένταση.</p>
-      <dl class="ax-dl">
-       <div><dt data-en="In a session">Σε μια συνεδρία</dt><dd data-en="First we prepare: we build a sense of safety and tools for calming down. Only then do we work on specific memories, step by step. Sessions last 60 minutes.">Πρώτα προετοιμαζόμαστε: χτίζουμε αίσθημα ασφάλειας και εργαλεία ηρέμησης. Μόνο τότε δουλεύουμε με συγκεκριμένες αναμνήσεις, βήμα βήμα. Οι συνεδρίες διαρκούν 60 λεπτά.</dd></div>
-       <div><dt data-en="When it helps">Πότε βοηθά</dt><dd data-en="Post-traumatic stress, painful experiences that keep coming back, accidents, losses, experiences that still bring fear or shame.">Μετατραυματικό στρες, οδυνηρές εμπειρίες που επιστρέφουν ξανά και ξανά, ατυχήματα, απώλειες, εμπειρίες που ακόμη φέρνουν φόβο ή ντροπή.</dd></div>
-      </dl>
+      <h3 data-en="EMDR – Reprocessing Traumatic Experiences">EMDR – Επανεπεξεργασία Τραυματικών Εμπειριών</h3>
+      <blockquote class="ax-q">
+       <p data-en="“We cannot change what happened, but we can change the way it continues to affect us.”">«Δεν μπορούμε να αλλάξουμε όσα συνέβησαν, μπορούμε όμως να αλλάξουμε τον τρόπο με τον οποίο συνεχίζουν να μας επηρεάζουν.»</p>
+      </blockquote>
+      <p data-en="Some experiences, although they are over, feel as if a part of them is still “present”.">Υπάρχουν εμπειρίες που, παρότι έχουν περάσει, μοιάζει σαν ένα κομμάτι τους να παραμένει «παρόν».</p>
+      <p data-en="It may be a difficult or traumatic experience, a relationship, a loss, a period of intense fear or shame, or even repeated experiences that shaped the way we learned to see ourselves.">Μπορεί να είναι μια δύσκολη ή τραυματική εμπειρία, μια σχέση, μια απώλεια, μια περίοδος έντονου φόβου ή ντροπής ή ακόμη και επαναλαμβανόμενες εμπειρίες που επηρέασαν τον τρόπο με τον οποίο μάθαμε να βλέπουμε τον εαυτό μας.</p>
+      <p data-en="EMDR (Eye Movement Desensitization and Reprocessing) is a therapeutic approach that helps to process such experiences, so that the memories can gradually be integrated in a more helpful way and no longer cause the same intensity in the present.">Το EMDR (Eye Movement Desensitization and Reprocessing) είναι μια θεραπευτική προσέγγιση που βοηθά στην επεξεργασία τέτοιων εμπειριών, ώστε οι αναμνήσεις να μπορούν σταδιακά να ενσωματωθούν με έναν πιο λειτουργικό τρόπο και να μην προκαλούν την ίδια ένταση στο παρόν.</p>
+      <p data-en="The process is gradual and adapted to each person, with safety and emotional stability built first of all.">Η διαδικασία είναι σταδιακή και προσαρμόζεται στον κάθε άνθρωπο, έχοντας χτιστεί πρωτίστως ασφάλεια και ψυχοσυναισθηματική σταθερότητα.</p>
+     </div>
+     <div class="ax-how">
+      <h4 data-en="How we work">Πώς δουλεύουμε</h4>
+      <ol class="ax-steps">
+       <li style="--i:0"><b data-en="We understand your story">Κατανοούμε την ιστορία σας</b><span data-en="Before processing begins, we explore what brings you to therapy and which experiences may be connected with your difficulties today.">Πριν ξεκινήσει η επεξεργασία, διερευνούμε τι σας φέρνει στη θεραπεία και ποιες εμπειρίες μπορεί να συνδέονται με τις σημερινές σας δυσκολίες.</span></li>
+       <li style="--i:1"><b data-en="We build safety and stability">Χτίζουμε ασφάλεια και σταθερότητα</b><span data-en="First we make sure you have the tools you need to manage difficult emotions and bodily reactions. Preparation is an important part of therapy.">Πρώτα φροντίζουμε να έχετε τα απαραίτητα εργαλεία ώστε να μπορείτε να διαχειρίζεστε δύσκολα συναισθήματα και σωματικές αντιδράσεις. Η προετοιμασία είναι σημαντικό κομμάτι της θεραπείας.</span></li>
+       <li style="--i:2"><b data-en="We choose what needs to be processed">Επιλέγουμε τι χρειάζεται να επεξεργαστούμε</b><span data-en="It may be a specific memory, an image, a negative belief about yourself or a feeling that still appears today.">Μπορεί να είναι μια συγκεκριμένη ανάμνηση, μια εικόνα, μια αρνητική πεποίθηση για τον εαυτό σας ή ένα συναίσθημα που εξακολουθεί να εμφανίζεται σήμερα.</span></li>
+       <li style="--i:3"><b data-en="Reprocessing begins">Ξεκινά η επανεπεξεργασία</b><span data-en="Using bilateral stimulation, such as eye movements, you are asked to notice whatever comes up spontaneously — images, thoughts, feelings or bodily sensations.">Με τη χρήση αμφίπλευρης διέγερσης, όπως οι οφθαλμικές κινήσεις, σας ζητείται να παρατηρείτε ό,τι εμφανίζεται αυθόρμητα — εικόνες, σκέψεις, συναισθήματα ή σωματικές αισθήσεις.</span></li>
+       <li style="--i:4"><b data-en="The way the experience is lived gradually changes">Αλλάζει σταδιακά ο τρόπος με τον οποίο βιώνεται η εμπειρία</b><span data-en="A memory can remain a memory, yet no longer carry the same emotional imprint.">Μια ανάμνηση μπορεί να παραμείνει ανάμνηση, αλλά να πάψει να έχει το ίδιο συναισθηματικό αποτύπωμα.</span></li>
+       <li style="--i:5"><b data-en="We connect the change with today">Συνδέουμε την αλλαγή με το σήμερα</b><span data-en="Processing is not only about the past. We look at how this change can affect the way you feel, think and function in your relationships and situations today.">Η επεξεργασία δεν αφορά μόνο το παρελθόν. Εξετάζουμε πώς η αλλαγή αυτή μπορεί να επηρεάσει τον τρόπο που αισθάνεστε, σκέφτεστε και λειτουργείτε στις σημερινές σας σχέσεις και καταστάσεις.</span></li>
+       <li style="--i:6"><b data-en="We close with stability">Ολοκληρώνουμε με σταθερότητα</b><span data-en="Every session ends in a way that lets you return to everyday life. The therapy continues gradually, according to your response and your needs.">Κάθε συνεδρία κλείνει με τρόπο που επιτρέπει την επιστροφή στην καθημερινότητα. Η θεραπευτική πορεία συνεχίζεται σταδιακά, ανάλογα με την ανταπόκριση και τις ανάγκες σας.</span></li>
+      </ol>
+      <p class="ax-plain" data-en="&lt;b&gt;In simple words:&lt;/b&gt; the aim of EMDR is not to erase the past. It is to help the past stop shaping the present so strongly."><b>Με απλά λόγια:</b> ο στόχος του EMDR δεν είναι να διαγράψει το παρελθόν. Είναι να βοηθήσει ώστε το παρελθόν να πάψει να καθορίζει τόσο έντονα το παρόν.</p>
      </div>
     </div>
 
-    <div class="ax-p" role="tabpanel" id="p-cat" aria-labelledby="t-cat" hidden>
+    <div class="ax-p ax-long" role="tabpanel" id="p-cat" aria-labelledby="t-cat" hidden>
      <div class="ax-fig" aria-hidden="true">
       <svg viewBox="0 0 360 260" class="fig fig-cat">
        <path class="f-loop" pathLength="1" d="M180 60 C 250 60, 270 110, 250 150 C 230 190, 130 190, 110 150 C 90 110, 110 60, 180 60"/>
@@ -919,12 +975,26 @@ main,.hdr-in,footer{transition:opacity .3s}
       </svg>
      </div>
      <div class="ax-txt">
-      <h3 data-en="Cognitive Analytic Therapy (CAT)">Γνωστική Αναλυτική Ψυχοθεραπεία (CAT)</h3>
-      <p data-en="CAT combines elements of cognitive and analytic therapy. It looks at the patterns that repeat in our lives and relationships — often formed early on — and at how they keep us stuck. The work follows three steps: we describe the pattern together, you learn to recognise it when it happens, and you find new ways out of it.">Η CAT συνδυάζει στοιχεία της γνωστικής και της αναλυτικής θεραπείας. Εξετάζει τα μοτίβα που επαναλαμβάνονται στη ζωή και στις σχέσεις μας — συχνά διαμορφωμένα από νωρίς — και το πώς μας κρατούν «κολλημένους». Η δουλειά ακολουθεί τρία βήματα: περιγράφουμε μαζί το μοτίβο, μαθαίνετε να το αναγνωρίζετε τη στιγμή που συμβαίνει και βρίσκετε νέους τρόπους να βγείτε από αυτό.</p>
-      <dl class="ax-dl">
-       <div><dt data-en="In a session">Σε μια συνεδρία</dt><dd data-en="Your story is put into words and often into a simple diagram, so that the pattern becomes visible. Therapy has a clear time frame agreed from the start.">Η ιστορία σας μπαίνει σε λέξεις και συχνά σε ένα απλό διάγραμμα, ώστε το μοτίβο να γίνει ορατό. Η θεραπεία έχει σαφές χρονικό πλαίσιο, που συμφωνείται από την αρχή.</dd></div>
-       <div><dt data-en="When it helps">Πότε βοηθά</dt><dd data-en="When the same difficulties keep repeating — in relationships, at work, in the way you treat yourself.">Όταν οι ίδιες δυσκολίες επαναλαμβάνονται — στις σχέσεις, στη δουλειά, στον τρόπο που φέρεστε στον εαυτό σας.</dd></div>
-      </dl>
+      <h3 data-en="Cognitive Analytic Therapy (CAT)">Γνωσιακή-Αναλυτική Ψυχοθεραπεία (ΓΑΨ)</h3>
+      <blockquote class="ax-q">
+       <p data-en="“Until you make the unconscious conscious, it will direct your life and you will call it fate.”">«Μέχρι να κάνεις το ασυνείδητο συνειδητό, αυτό θα κατευθύνει τη ζωή σου και θα το ονομάζεις μοίρα.»</p>
+       <cite data-en="Attributed to Carl Jung">Αποδίδεται στον Carl Jung</cite>
+      </blockquote>
+      <p data-en="Have you ever noticed that, even though the people or the circumstances in your life change, some things seem to repeat themselves?">Έχετε παρατηρήσει ποτέ ότι, παρόλο που αλλάζουν οι άνθρωποι ή οι καταστάσεις στη ζωή σας, κάποια πράγματα μοιάζουν να επαναλαμβάνονται;</p>
+      <p data-en="Cognitive Analytic Therapy (CAT) helps us understand these repeating patterns and the way they affect our relationship with ourselves and with others.">Η Γνωσιακή-Αναλυτική Ψυχοθεραπεία (ΓΑΨ) βοηθά να κατανοήσουμε αυτά τα επαναλαμβανόμενα μοτίβα και τον τρόπο με τον οποίο επηρεάζουν τη σχέση μας με τον εαυτό μας και τους άλλους.</p>
+      <p data-en="It combines elements of the cognitive and the psychodynamic approach and gives particular weight to relationships and to the way we have learned to relate.">Συνδυάζει στοιχεία γνωσιακής και ψυχοδυναμικής προσέγγισης και δίνει ιδιαίτερη σημασία στις σχέσεις και στον τρόπο με τον οποίο έχουμε μάθει να σχετιζόμαστε.</p>
+     </div>
+     <div class="ax-how">
+      <h4 data-en="How we work">Πώς δουλεύουμε</h4>
+      <ol class="ax-steps">
+       <li style="--i:0"><b data-en="We start from what concerns you today">Ξεκινάμε από αυτό που σας απασχολεί σήμερα</b><span data-en="We talk about the difficulty that brought you to therapy and how it shows up in your everyday life, in your relationships and in the way you see yourself.">Μιλάμε για τη δυσκολία που σας έφερε στη θεραπεία και για το πώς αυτή εμφανίζεται στην καθημερινότητά σας, στις σχέσεις σας και στον τρόπο που βλέπετε τον εαυτό σας.</span></li>
+       <li style="--i:1"><b data-en="We look for the repeating patterns">Αναζητούμε τα επαναλαμβανόμενα μοτίβα</b><span data-en="We notice what happens again and again. What do you expect from others? How do you react when you fear you will be hurt? What do you do when you feel rejection, anger, loneliness or insecurity?">Παρατηρούμε τι συμβαίνει ξανά και ξανά. Τι περιμένετε από τους άλλους; Πώς αντιδράτε όταν φοβάστε ότι θα πληγωθείτε; Τι κάνετε όταν αισθάνεστε απόρριψη, θυμό, μοναξιά ή ανασφάλεια;</span></li>
+       <li class="solo" style="--i:2"><span data-en="The aim is to create a personal “map” of your patterns, exploring how earlier experiences and relationships may have shaped the way you relate today. But we do not stay only in the past. Above all, we look at how the past keeps affecting the present.">Στόχος είναι να δημιουργήσουμε έναν προσωπικό «χάρτη» των μοτίβων σας, διερευνώντας πώς προηγούμενες εμπειρίες και σχέσεις μπορεί να έχουν επηρεάσει τον τρόπο με τον οποίο σχετίζεστε σήμερα. Δεν μένουμε όμως μόνο στο παρελθόν. Εξετάζουμε κυρίως πώς το παρελθόν συνεχίζει να επηρεάζει το παρόν.</span></li>
+       <li style="--i:3"><b data-en="We create new choices">Δημιουργούμε νέες επιλογές</b><span data-en="Once a pattern becomes clearer, we can start looking for different ways of responding: learning, for example, to express needs without fear, to set boundaries without guilt, or to stay close to others without losing ourselves.">Όταν ένα μοτίβο γίνει πιο ξεκάθαρο, μπορούμε να αρχίσουμε να αναζητούμε διαφορετικούς τρόπους αντίδρασης. Να μάθουμε, για παράδειγμα, να εκφράζουμε ανάγκες χωρίς φόβο, να θέτουμε όρια χωρίς ενοχή ή να παραμένουμε κοντά στους άλλους χωρίς να χάνουμε τον εαυτό μας.</span></li>
+       <li style="--i:4"><b data-en="We carry the change into everyday life">Μεταφέρουμε την αλλαγή στην καθημερινότητα</b><span data-en="Therapy does not end when the office door closes. We notice how the new ways of thinking and behaving work in the real relationships and situations of your life.">Η θεραπεία δεν τελειώνει όταν κλείνει η πόρτα του γραφείου. Παρατηρούμε πώς οι νέοι τρόποι σκέψης και συμπεριφοράς εφαρμόζονται στις πραγματικές σχέσεις και καταστάσεις της ζωής σας.</span></li>
+       <li style="--i:5"><b data-en="You learn to recognise the patterns yourself">Μαθαίνετε να αναγνωρίζετε μόνοι σας τα μοτίβα</b><span data-en="The final aim is that you can recognise an old cycle the moment it starts to appear, and have more choices about how to handle it.">Ο τελικός στόχος είναι να μπορείτε να αναγνωρίζετε έναν παλιό κύκλο τη στιγμή που αρχίζει να εμφανίζεται και να έχετε πλέον περισσότερες επιλογές για το πώς θα τον διαχειριστείτε.</span></li>
+      </ol>
+      <p class="ax-plain" data-en="&lt;b&gt;In simple words:&lt;/b&gt; CAT helps us understand “why do I end up in the same place again and again?” and, through that understanding, create a different way of relating to ourselves and to others."><b>Με απλά λόγια:</b> η ΓΑΨ βοηθά να καταλάβουμε «γιατί καταλήγω ξανά και ξανά στο ίδιο σημείο;» και, μέσα από αυτή την κατανόηση, να δημιουργήσουμε έναν διαφορετικό τρόπο να σχετιζόμαστε με τον εαυτό μας και τους άλλους.</p>
      </div>
     </div>
 
