@@ -384,7 +384,8 @@ main,.hdr-in,footer{transition:opacity .3s}
 .ax-tabs.stuck{background:#30361F;box-shadow:0 0 0 100vmax #30361F;clip-path:inset(0 -100vmax)}
 @media (min-width:1181px){
  .ax{grid-template-columns:1fr;gap:26px}
- .ax .ax-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:10px 0}
+ .ax .ax-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:10px 0}
+ .ax .ax-tabs button{padding-left:12px!important;padding-right:12px!important}
  .ax .ax-tabs button{padding:14px 18px;justify-content:center}
  .ax .ax-tabs .ax-n{font-size:19px}
  .ax .ax-tabs button::before{left:18px;right:18px;top:auto;bottom:-1px;width:auto;height:3px;transform:scaleX(0)}
@@ -434,6 +435,15 @@ main,.hdr-in,footer{transition:opacity .3s}
 .ax-p.on .f-exit{animation:draw 1s 1.7s var(--ease) forwards}
 .f-cA,.f-cB{fill:rgba(244,238,225,.04);stroke:rgba(220,195,142,.7);stroke-width:1.6}
 .f-mid{fill:rgba(118,133,74,.55)}
+.sx-c{fill:rgba(118,133,74,.16);stroke:rgba(220,195,142,.7);stroke-width:1.5;transform-box:fill-box;transform-origin:center}
+.sx-core{fill:var(--wheat);transform-box:fill-box;transform-origin:center}
+.ax-p.on .sx-c{animation:sxIn .9s var(--ease) both,breathe 6s 1.2s ease-in-out infinite}
+.ax-p.on .sx-2{animation-delay:.15s,1.6s}.ax-p.on .sx-3{animation-delay:.3s,2s}
+.ax-p.on .sx-core{animation:sxIn .6s .7s var(--ease) both,sxBeat 3s 1.4s ease-in-out infinite}
+@keyframes sxIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes sxBeat{50%{transform:scale(1.5);opacity:.7}}
+@media (prefers-reduced-motion:reduce){.ax-p.on .sx-c,.ax-p.on .sx-core{animation:none}}
+
 .ax-p.on .f-cA{animation:inL 1.2s var(--ease) both}
 .ax-p.on .f-cB,.ax-p.on .f-mid{animation:inR 1.2s var(--ease) both}
 .ax-p.on .fig-cpl .f-mid{animation:inR 1.2s var(--ease) both,fade0 1.2s both}
@@ -810,7 +820,7 @@ main,.hdr-in,footer{transition:opacity .3s}
  <div class="hero-in">
   <div class="hero-txt">
    <p class="eyebrow h-in" style="--d:.05s"><span class="dot"></span><span data-en="Psychologist – Psychotherapist · Peristeri, Athens">Ψυχολόγος – Ψυχοθεραπευτής · Περιστέρι</span></p>
-   <h1 id="h1"><span class="sr" data-en="Psychotherapy for anxiety, relationships, difficult experiences, adolescence and self-knowledge">Ψυχοθεραπεία για το άγχος, τις σχέσεις, τις δύσκολες εμπειρίες, την εφηβεία και την αυτογνωσία</span><span class="h1v" aria-hidden="true"><span class="l1" data-en="Therapy for">Ψυχοθεραπεία για</span><span class="rot" id="rot"><span class="rot-w on" data-en="anxiety">το άγχος</span><span class="rot-w" data-en="relationships">τις σχέσεις</span><span class="rot-w" data-en="difficult experiences">τις δύσκολες εμπειρίες</span><span class="rot-w" data-en="adolescence">την εφηβεία</span><span class="rot-w" data-en="self-knowledge">την αυτογνωσία</span></span></span></h1>
+   <h1 id="h1"><span class="sr" data-en="Psychotherapy for anxiety, relationships, difficult experiences, adolescence, self-knowledge and sexual health">Ψυχοθεραπεία για το άγχος, τις σχέσεις, τις δύσκολες εμπειρίες, την εφηβεία, την αυτογνωσία και τη σεξουαλική υγεία</span><span class="h1v" aria-hidden="true"><span class="l1" data-en="Therapy for">Ψυχοθεραπεία για</span><span class="rot" id="rot"><span class="rot-w on" data-en="anxiety">το άγχος</span><span class="rot-w" data-en="relationships">τις σχέσεις</span><span class="rot-w" data-en="difficult experiences">τις δύσκολες εμπειρίες</span><span class="rot-w" data-en="adolescence">την εφηβεία</span><span class="rot-w" data-en="self-knowledge">την αυτογνωσία</span><span class="rot-w" data-en="sexual health">τη σεξουαλική υγεία</span></span></span></h1>
    <p class="lead h-in" style="--d:.55s" data-en="Individual Cognitive Behavioural Therapy (CBT), EMDR therapy, couples therapy and therapy for children and adolescents — in a calm, safe setting a few minutes’ walk from Anthoupoli metro station.">Ατομική Γνωσιακή Συμπεριφορική Θεραπεία (CBT), θεραπεία EMDR, θεραπεία ζεύγους και θεραπεία παιδιών και εφήβων — σε ένα ήρεμο και ασφαλές πλαίσιο, λίγα λεπτά με τα πόδια από το μετρό Ανθούπολη.</p>
    <div class="hero-cta h-in" style="--d:.7s">
     <a class="btn btn-p" href="https://www.doctoranytime.gr/d/Psychologos/panagiotis-mpanos?autobook=1" target="_blank" rel="noopener"><span data-en="Book a session">Κλείστε ραντεβού</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -902,6 +912,7 @@ main,.hdr-in,footer{transition:opacity .3s}
     <button role="tab" id="t-emdr" aria-controls="p-emdr" aria-selected="false" tabindex="-1"><span class="ax-k">EMDR</span><span class="ax-n" data-en="Trauma therapy">Θεραπεία τραύματος</span></button>
     <button role="tab" id="t-cat" aria-controls="p-cat" aria-selected="false" tabindex="-1"><span class="ax-k" data-en="CAT">ΓΑΨ</span><span class="ax-n" data-en="Cognitive Analytic Therapy">Γνωσιακή-Αναλυτική Ψυχοθεραπεία</span></button>
     <button role="tab" id="t-cpl" aria-controls="p-cpl" aria-selected="false" tabindex="-1"><span class="ax-k" data-en="Couples">Ζεύγους</span><span class="ax-n" data-en="Couples therapy">Θεραπεία ζεύγους</span></button>
+    <button role="tab" id="t-sex" aria-controls="p-sex" aria-selected="false" tabindex="-1"><span class="ax-k" data-en="Psychosexual">Ψυχοσεξουαλική</span><span class="ax-n" data-en="Sex therapy">Σεξουαλική θεραπεία</span></button>
    </div>
    <div class="ax-stage">
 
@@ -1056,6 +1067,27 @@ main,.hdr-in,footer{transition:opacity .3s}
       <dl class="ax-dl">
        <div><dt data-en="In a session">Σε μια συνεδρία</dt><dd data-en="60 minutes, both partners present. We look at what happens between you, not only at what each person does.">60 λεπτά, με τους δύο συντρόφους παρόντες. Εξετάζουμε τι συμβαίνει ανάμεσά σας, όχι μόνο τι κάνει ο καθένας.</dd></div>
        <div><dt data-en="When it helps">Πότε βοηθά</dt><dd data-en="Frequent conflict, distance, jealousy or trust issues, big decisions, transitions such as the arrival of a child.">Συχνές συγκρούσεις, απόσταση, ζήλια ή ζητήματα εμπιστοσύνης, μεγάλες αποφάσεις, μεταβάσεις όπως ο ερχομός ενός παιδιού.</dd></div>
+      </dl>
+     </div>
+    </div>
+
+    <div class="ax-p" role="tabpanel" id="p-sex" aria-labelledby="t-sex" hidden>
+     <div class="ax-fig" aria-hidden="true">
+      <svg viewBox="0 0 360 260" class="fig fig-sex">
+       <circle class="sx-c sx-1" cx="180" cy="98" r="60"/><circle class="sx-c sx-2" cx="144" cy="160" r="60"/><circle class="sx-c sx-3" cx="216" cy="160" r="60"/>
+       <circle class="sx-core" cx="180" cy="139" r="7"/>
+       <text x="180" y="72" class="f-lb" data-en="body">σώμα</text>
+       <text x="118" y="184" class="f-lb" data-en="mind">ψυχή</text>
+       <text x="242" y="184" class="f-lb" data-en="relationship">σχέση</text>
+       <text x="180" y="22" class="f-lb f-hi" data-en="sexual health">σεξουαλική υγεία</text>
+      </svg>
+     </div>
+     <div class="ax-txt">
+      <h3 data-en="Sex therapy">Σεξουαλική θεραπεία</h3>
+      <p data-en="Sexuality is part of our mental health and of our relationships. Sex (psychosexual) therapy is a form of psychotherapy that focuses on difficulties in sexual life. It works through conversation and specific exercises, looking at the body, the emotions and the relationship together — in complete confidentiality and without judgement. It can be individual or with your partner.">Η σεξουαλικότητα είναι κομμάτι της ψυχικής μας υγείας και των σχέσεών μας. Η σεξουαλική (ψυχοσεξουαλική) θεραπεία είναι μια μορφή ψυχοθεραπείας που εστιάζει στις δυσκολίες της σεξουαλικής ζωής. Δουλεύει μέσα από τη συζήτηση και συγκεκριμένες ασκήσεις, εξετάζοντας μαζί το σώμα, τα συναισθήματα και τη σχέση — με απόλυτη εχεμύθεια και χωρίς κριτική. Μπορεί να γίνει ατομικά ή μαζί με τον/τη σύντροφό σας.</p>
+      <dl class="ax-dl">
+       <div><dt data-en="In a session">Σε μια συνεδρία</dt><dd data-en="We talk calmly and respectfully about what concerns you, at your own pace. There is no physical contact or examination; where needed, the therapy goes hand in hand with a medical assessment.">Μιλάμε με ηρεμία και σεβασμό για ό,τι σας απασχολεί, με τον δικό σας ρυθμό. Δεν υπάρχει καμία σωματική επαφή ή εξέταση· όπου χρειάζεται, η θεραπεία συνδυάζεται με ιατρική εκτίμηση.</dd></div>
+       <div><dt data-en="When it helps">Πότε βοηθά</dt><dd data-en="Performance anxiety, low desire, pain or difficulty during intercourse, different levels of desire between partners, or when sexual life simply weighs on your well-being or your relationship.">Άγχος επίδοσης, μειωμένη επιθυμία, πόνος ή δυσκολία στη σεξουαλική επαφή, διαφορετική επιθυμία ανάμεσα στους συντρόφους ή όταν η σεξουαλική ζωή επιβαρύνει την ευεξία ή τη σχέση σας.</dd></div>
       </dl>
      </div>
     </div>
